@@ -1,9 +1,46 @@
-@import '../styles';
+@import '../styles/index';
 
 .signup-container {
   display: flex;
   flex-flow: column;
 
+  padding: @pad-l;
+  padding-top: 6rem;
   width: 100%;
   height: 100%;
+}
+
+.signup-title {
+  position: relative;
+  padding-bottom: @pad-l;
+  margin-bottom: @mar-xl;
+
+  color: @white;
+  font-weight: @bold;
+
+  &::before {
+    position: absolute;
+    top: 100%;
+    width: 2rem;
+    border: 1.5px solid @green;
+    content: '';
+  }
+}
+
+.signup-info {
+  color: @white;
+
+  > p {
+    margin-bottom: @mar-m;
+  }
+}
+
+.signup-form {
+  display: flex;
+  flex-flow: column;
+}
+
+.signup-form-elements {
+  display: flex;
+  flex-flow: column;
 }

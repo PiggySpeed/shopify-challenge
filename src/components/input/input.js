@@ -1,4 +1,4 @@
-import './input';
+import './input.less';
 import React from 'react';
 
 const Input = () => (

@@ -1,4 +1,4 @@
-import './button';
+import './button.less';
 import React from 'react';
 
 const Button = () => (

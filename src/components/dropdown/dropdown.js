@@ -1,4 +1,4 @@
-import './dropdown';
+import './dropdown.less';
 import React from 'react';
 
 const DropDown = () => (
