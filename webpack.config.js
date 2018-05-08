@@ -1,5 +1,9 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+
+const LAUNCH_COMMAND = process.env.NODE_ENV;
+const isProduction = LAUNCH_COMMAND === 'production';
 
 const devConfig = {
   devtool: 'source-map',
@@ -12,14 +16,28 @@ const devConfig = {
   ]
 };
 
+const prodConfig = {
+  mode: 'production',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'index.html'),
+      filename: 'index.html',
+      inject: 'body'
+    })
+  ]
+};
+
 const base = {
   entry: [
     './src/index.js'
   ],
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -33,4 +51,4 @@ const base = {
   }
 };
 
-module.exports = Object.assign({}, base, devConfig);
+module.exports = Object.assign({}, base, (isProduction ? prodConfig : devConfig));
