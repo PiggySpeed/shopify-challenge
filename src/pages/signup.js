@@ -12,8 +12,6 @@ const SIGNUP_PAGE_THANKS = 'Thanks for subscribing';
 const SIGNUP_PAGE_THANKS_INFO = 'You\'ll start receiving free tips and resources soon.';
 const NEWSLETTER_OPTIONS = ['Marketing', 'Mobile', 'Ecommerce', 'Design'];
 const ERR_INVALID_EMAIL = 'Please enter a valid email address';
-const ERR_INVALID_NEWSLETTER = 'Please select a topic';
-const ERR_INCOMPLETE_FORM = 'Please complete the form';
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -22,9 +20,7 @@ export default class SignUp extends React.Component {
       success: false,
       invalidEmail: false,
       email: '',
-      invalidNewsletter: false,
       newsletter: '',
-      incompleteForm: false,
       submitting: false
     };
     this.handleValidate = this.handleValidate.bind(this);
@@ -40,29 +36,24 @@ export default class SignUp extends React.Component {
     if (email) {
       this.setState({
         invalidEmail: false,
-        email: email[0],
-        incompleteForm: false
+        email: email[0]
       });
     } else if (!input) {
       this.setState({
         invalidEmail: false,
-        email: '',
-        incompleteForm: false
+        email: ''
       })
     } else {
       this.setState({
         invalidEmail: true,
-        email: '',
-        incompleteForm: false
+        email: ''
       })
     }
   };
 
   handleDropDownChange(e) {
     this.setState({
-      newsletter: NEWSLETTER_OPTIONS[e.target.value],
-      invalidNewsletter: false,
-      incompleteForm: false
+      newsletter: NEWSLETTER_OPTIONS[e.target.value]
     });
   }
 
@@ -75,26 +66,12 @@ export default class SignUp extends React.Component {
       this.setState({
         invalidEmail: true
       });
-    }
-
-    if (!this.state.newsletter) {
-      this.setState({
-        invalidNewsletter: true
-      });
-    }
-
-    if (!this.state.email || !this.state.newsletter) {
-      this.setState({
-        incompleteForm: true
-      });
       return;
     }
 
     this.setState({
       submitting: true,
-      invalidEmail: false,
-      invalidNewsletter: false,
-      incompleteForm: false,
+      invalidEmail: false
     });
 
     setTimeout(() => {
@@ -104,7 +81,7 @@ export default class SignUp extends React.Component {
       });
       console.log(`
         Email: ${this.state.email}, 
-        Newsletter Type: ${this.state.newsletter}
+        Newsletter Type: ${this.state.newsletter ? this.state.newsletter : "None"}
       `);
     }, 2000);
   }
@@ -133,14 +110,11 @@ export default class SignUp extends React.Component {
               <DropDown
                 options={NEWSLETTER_OPTIONS}
                 onChange={this.handleDropDownChange}
-                errorMsg={this.state.invalidNewsletter ? ERR_INVALID_NEWSLETTER : ''}
+                errorMsg=""
               />
             </div>
 
-            <Button
-              onClick={this.handleSubmit}
-              errorMsg={this.state.incompleteForm ? ERR_INCOMPLETE_FORM : ''}
-            >
+            <Button onClick={this.handleSubmit} errorMsg="">
               {this.state.submitting ? "Submitting..." : "Sign up now"}
             </Button>
           </form>}
