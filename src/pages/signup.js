@@ -114,7 +114,7 @@ export default class SignUp extends React.Component {
               />
             </div>
 
-            <Button onClick={this.handleSubmit} errorMsg="">
+            <Button onClick={this.handleSubmit} errorMsg="" disabled={this.state.submitting}>
               {this.state.submitting ? "Submitting..." : "Sign up now"}
             </Button>
           </form>}
