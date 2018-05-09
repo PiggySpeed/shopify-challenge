@@ -11,8 +11,10 @@ const Button = ({ errorMsg, children, onClick }) => (
       form="signup"
       value={children}
       onClick={onClick}
+      aria-label="submit"
+      aria-describedby="button-error-msg"
     />
-    {errorMsg && <label className="button-error" form="signup">{errorMsg}</label>}
+    {errorMsg && <label id="button-error-msg" className="button-error" form="signup">{errorMsg}</label>}
   </div>
 );
 Button.propTypes = {

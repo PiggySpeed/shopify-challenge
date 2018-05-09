@@ -11,8 +11,16 @@ const ValidatedInput = ({ errorMsg, onBlur }) => (
       placeholder="Email Address"
       className="validated-input-text-box"
       onBlur={onBlur}
+      aria-label="email"
+      aria-describedby="validated-input-error"
     />
-    {errorMsg && <label className="validated-input-error" form="signup">{errorMsg}</label>}
+    {errorMsg && <label
+      id="validated-input-error"
+      className="validated-input-error"
+      form="signup"
+    >
+      {errorMsg}
+    </label>}
   </div>
 );
 ValidatedInput.propTypes = {

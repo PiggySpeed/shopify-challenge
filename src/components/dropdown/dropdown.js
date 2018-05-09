@@ -6,16 +6,18 @@ const DropDown = ({ errorMsg, options, onChange }) => (
   <div className="dropdown-container">
     <select
       name="newsletter"
+      id="newsletter"
       className="dropdown"
       form="signup"
       defaultValue=""
       onChange={onChange}
       required
+      aria-label="newsletter type"
+      aria-describedby="dropdown-error-msg"
     >
 
       <option
         key="default"
-        className="dropdown-option-placeholder"
         value=""
         form="signup"
         disabled
@@ -27,14 +29,13 @@ const DropDown = ({ errorMsg, options, onChange }) => (
       {options.map((option, id) => <option
         key={id}
         form="signup"
-        className="dropdown-option"
         value={id}>
         {option}
       </option>)}
 
     </select>
 
-    {errorMsg && <label className="dropdown-error" form="signup">{errorMsg}</label>}
+    {errorMsg && <label id="dropdown-error-msg" className="dropdown-error" htmlFor="newsletter" form="signup">{errorMsg}</label>}
   </div>
 );
 DropDown.propTypes = {
