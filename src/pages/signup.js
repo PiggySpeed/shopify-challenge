@@ -12,7 +12,7 @@ const SIGNUP_PAGE_THANKS = 'Thanks for subscribing';
 const SIGNUP_PAGE_THANKS_INFO = 'You\'ll start receiving free tips and resources soon.';
 const NEWSLETTER_OPTIONS = ['Marketing', 'Mobile', 'Ecommerce', 'Design'];
 const ERR_INVALID_EMAIL = 'Please enter a valid email address';
-const ERR_INVALID_NEWSLETTER = 'Please select a newsletter topic';
+const ERR_INVALID_NEWSLETTER = 'Please select a topic';
 const ERR_INCOMPLETE_FORM = 'Please complete the form';
 
 export default class SignUp extends React.Component {
