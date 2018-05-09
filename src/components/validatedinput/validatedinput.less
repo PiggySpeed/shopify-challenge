@@ -1,0 +1,28 @@
+@import '../../styles/index';
+
+.validated-input-container {
+  position: relative;
+  width: 100%;
+  margin: @mar-m 0 @mar-l 0;
+}
+
+.validated-input-text-box {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: @pad-s;
+  padding-right: @pad-s;
+
+  border-color: transparent;
+  border-radius: 0.25rem;
+  font-size: @font-m;
+  line-height: 2rem;
+}
+
+.validated-input-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: @mar-s;
+  font-size: @font-ms;
+  color: @red;
+}
