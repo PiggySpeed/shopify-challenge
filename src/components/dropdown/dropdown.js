@@ -1,5 +1,6 @@
 import './dropdown.less';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DropDown = ({ errorMsg, options, onChange }) => (
   <div className="dropdown-container">
@@ -36,5 +37,10 @@ const DropDown = ({ errorMsg, options, onChange }) => (
     {errorMsg && <label className="dropdown-error" form="signup">{errorMsg}</label>}
   </div>
 );
+DropDown.propTypes = {
+  errorMsg: PropTypes.string,
+  options: PropTypes.array.isRequired,
+  onChange: PropTypes.func
+};
 
 export default DropDown;

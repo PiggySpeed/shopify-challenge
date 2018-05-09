@@ -3,11 +3,30 @@
 .signup-container {
   display: flex;
   flex-flow: column;
+  align-items: center;
 
-  padding: @pad-l;
-  padding-top: 6rem;
   width: 100%;
   height: 100%;
+
+  overflow-y: scroll;
+}
+
+.signup-inner-container {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+
+  padding: 6rem @pad-l;
+  width: 100%;
+  height: 100%;
+
+  @media screen and (orientation: landscape) {
+    height: auto;
+  }
+
+  @media screen and (min-width: 450px) {
+    width: 60%;
+  }
 }
 
 .signup-title {

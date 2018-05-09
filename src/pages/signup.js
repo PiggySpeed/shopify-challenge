@@ -112,40 +112,41 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <div className="signup-container">
+        <div className="signup-inner-container">
 
-        <h1 className="signup-title">{SIGNUP_PAGE_TITLE}</h1>
+          <h1 className="signup-title">{SIGNUP_PAGE_TITLE}</h1>
 
-        <span className="signup-info">
-          {!this.state.success && <p>{SIGNUP_PAGE_INSTRUCTIONS}</p>}
-          {this.state.success && <p className="bold">{SIGNUP_PAGE_THANKS}</p>}
-          {this.state.success && <p>{SIGNUP_PAGE_THANKS_INFO}</p>}
-        </span>
+          <span className="signup-info">
+            {!this.state.success && <p>{SIGNUP_PAGE_INSTRUCTIONS}</p>}
+            {this.state.success && <p className="bold">{SIGNUP_PAGE_THANKS}</p>}
+            {this.state.success && <p>{SIGNUP_PAGE_THANKS_INFO}</p>}
+          </span>
 
-        {!this.state.success && <form id="signup" className="signup-form">
-          <div className="signup-form-elements">
+          {!this.state.success && <form id="signup" className="signup-form">
+            <div className="signup-form-elements">
 
-            <ValidatedInput
-              onBlur={this.handleValidate}
-              errorMsg={this.state.invalidEmail ? ERR_INVALID_EMAIL : ''}
-            />
+              <ValidatedInput
+                onBlur={this.handleValidate}
+                errorMsg={this.state.invalidEmail ? ERR_INVALID_EMAIL : ''}
+              />
 
-            <DropDown
-              options={NEWSLETTER_OPTIONS}
-              onChange={this.handleDropDownChange}
-              errorMsg={this.state.invalidNewsletter ? ERR_INVALID_NEWSLETTER : ''}
-            />
-          </div>
+              <DropDown
+                options={NEWSLETTER_OPTIONS}
+                onChange={this.handleDropDownChange}
+                errorMsg={this.state.invalidNewsletter ? ERR_INVALID_NEWSLETTER : ''}
+              />
+            </div>
 
-          <Button
-            onClick={this.handleSubmit}
-            errorMsg={this.state.incompleteForm ? ERR_INCOMPLETE_FORM : ''}
-          >
-            {this.state.submitting ? "Submitting..." : "Sign up now"}
-          </Button>
-        </form>}
+            <Button
+              onClick={this.handleSubmit}
+              errorMsg={this.state.incompleteForm ? ERR_INCOMPLETE_FORM : ''}
+            >
+              {this.state.submitting ? "Submitting..." : "Sign up now"}
+            </Button>
+          </form>}
 
+        </div>
       </div>
     );
   }
-
 }
