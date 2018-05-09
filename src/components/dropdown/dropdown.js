@@ -1,13 +1,14 @@
 import './dropdown.less';
 import React from 'react';
 
-const DropDown = ({ errorMsg, options, onSelect }) => (
+const DropDown = ({ errorMsg, options, onChange }) => (
   <div className="dropdown-container">
     <select
       name="newsletter"
       className="dropdown"
       form="signup"
       defaultValue=""
+      onChange={onChange}
       required
     >
 
