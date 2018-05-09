@@ -6,6 +6,7 @@ const ValidatedInput = ({ errorMsg, onBlur }) => (
     <input
       type="email"
       id="email"
+      form="signup"
       placeholder="Email Address"
       className="validated-input-text-box"
       onBlur={onBlur}

@@ -10,7 +10,9 @@ const SIGNUP_PAGE_TITLE = 'Stay up to date with ecommerce trends with Shopify\'s
 const SIGNUP_PAGE_INSTRUCTIONS = 'Subscribe for free marketing tips';
 const SIGNUP_PAGE_THANKS = 'Thanks for subscribing';
 const SIGNUP_PAGE_THANKS_INFO = 'You\'ll start receiving free tips and resources soon.';
+const NEWSLETTER_OPTIONS = ['Marketing', 'Mobile', 'Ecommerce', 'Design'];
 const ERR_INVALID_EMAIL = 'Please enter a valid email address';
+const ERR_INVALID_NEWSLETTER = 'Please select a newsletter type';
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -18,9 +20,13 @@ export default class SignUp extends React.Component {
     this.state = {
       success: false,
       invalidEmail: false,
-      email: ''
+      email: '',
+      invalidNewsletter: false,
+      newsletter: '',
+      submitting: false
     };
     this.handleValidate = this.handleValidate.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleValidate(e) {
@@ -28,11 +34,16 @@ export default class SignUp extends React.Component {
     const input = e.target.value;
     const email = input.match(regex);
 
-    if (!!email) {
+    if (email) {
       this.setState({
         invalidEmail: false,
         email: email[0]
       });
+    } else if (!input) {
+      this.setState({
+        invalidEmail: false,
+        email: ''
+      })
     } else {
       this.setState({
         invalidEmail: true,
@@ -40,6 +51,16 @@ export default class SignUp extends React.Component {
       })
     }
   };
+
+  handleSelect(e) {
+    console.log(e);
+  }
+
+  handleSubmit(e) {
+    console.log('submitting...');
+
+    // TODO: setTimeout
+  }
 
   render() {
     return (
@@ -61,9 +82,16 @@ export default class SignUp extends React.Component {
               errorMsg={this.state.invalidEmail ? ERR_INVALID_EMAIL : ''}
             />
 
-            <DropDown />
+            <DropDown
+              options={NEWSLETTER_OPTIONS}
+              onSelect={this.handleSelect}
+              errorMsg={this.state.invalidNewsletter ? ERR_INVALID_NEWSLETTER : ''}
+            />
           </div>
-          <Button>{this.state.success ? "Sign up now" : "Submitting..."}</Button>
+
+          <Button onClick={this.handleSubmit}>
+            {this.state.submitting ? "Submitting..." : "Sign up now"}
+          </Button>
         </form>}
 
       </div>

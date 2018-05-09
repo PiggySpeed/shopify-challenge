@@ -3,7 +3,7 @@
 .validated-input-container {
   position: relative;
   width: 100%;
-  margin: @mar-m 0 @mar-l 0;
+  margin-bottom: @mar-l;
 }
 
 .validated-input-text-box {
@@ -12,10 +12,14 @@
   padding-left: @pad-s;
   padding-right: @pad-s;
 
-  border-color: transparent;
+  border: 1px solid @grey;
   border-radius: 0.25rem;
   font-size: @font-m;
   line-height: 2rem;
+
+  &:active {
+    border: 1px solid @purple-light;
+  }
 }
 
 .validated-input-error {
